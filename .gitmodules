@@ -1,0 +1,6 @@
+[submodule "vim/spf13-vim"]
+	path = vim/spf13-vim
+	url = https://github.com/spf13/spf13-vim
+[submodule "fish/.config/fish/nvm-wrapper"]
+	path = fish/.config/fish/nvm-wrapper
+	url = https://github.com/passcod/nvm-fish-wrapper
