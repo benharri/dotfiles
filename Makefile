@@ -50,7 +50,7 @@ git:
 vim:
 	@printf "$(YELLOW)--- vim ------------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" vim
-	~/spf13-vim/bootstrap.sh
+	~/.spf13-vim/bootstrap.sh
 
 mutt:
 	@printf "$(YELLOW)--- mutt -----------------------------------------------\n$(RESET)"
