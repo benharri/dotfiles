@@ -4,6 +4,4 @@
 	signingkey = 0647C7F8
 [push]
 	default = simple
-[url "git@github.com:"]
-	insteadOf = https://github.com/
 
