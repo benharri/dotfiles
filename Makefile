@@ -1,0 +1,68 @@
+YELLOW = $$(tput setaf 226)
+GREEN = $$(tput setaf 46)
+RED = $$(tput setaf 196)
+RESET = $$(tput sgr0)
+
+ifeq ($(OS),Windows_NT)
+	UNAME = Windows
+else
+	UNAME_S := $(shell uname -s)
+	ifeq ($(UNAME_S),Linux)
+		UNAME = Linux
+	endif
+	UNAME ?= Other
+endif
+
+install:
+	@make $(UNAME)
+
+Linux: bash ssh fish git mutt byobu weechat vim
+Windows: bash ssh git vim
+Other: bash git vim 
+
+clean:
+	@printf "$(RED)--- clean -----------------------------------------------\n$(RESET)"
+	stow -t "$$HOME" -D bash
+	stow -t "$$HOME" -D ssh
+	stow -t "$$HOME" -D fish
+	stow -t "$$HOME" -D git
+	stow -t "$$HOME" -D vim
+	stow -t "$$HOME" -D mutt
+	stow -t "$$HOME" -D byobu
+	stow -t "$$HOME" -D weechat
+
+bash:
+	@printf "$(YELLOW)--- bash -----------------------------------------------\n$(RESET)"
+	stow -t "$$HOME" bash
+
+ssh:
+	@printf "$(YELLOW)--- ssh ------------------------------------------------\n$(RESET)"
+	stow -t "$$HOME" ssh
+
+fish:
+	@printf "$(YELLOW)--- fish -----------------------------------------------\n$(RESET)"
+	stow -t "$$HOME" fish
+
+git:
+	@printf "$(YELLOW)--- git ------------------------------------------------\n$(RESET)"
+	stow -t "$$HOME" git
+
+vim:
+	@printf "$(YELLOW)--- vim ------------------------------------------------\n$(RESET)"
+	stow -t "$$HOME" vim
+	~/.spf13-vim/bootstrap.sh
+
+mutt:
+	@printf "$(YELLOW)--- mutt -----------------------------------------------\n$(RESET)"
+	stow -t "$$HOME" mutt
+
+byobu:
+	@printf "$(YELLOW)--- byobu ----------------------------------------------\n$(RESET)"
+	stow -t "$$HOME" byobu
+
+weechat:
+	@printf "$(YELLOW)--- weechat --------------------------------------------\n$(RESET)"
+	stow -t "$$HOME" weechat
+
+.PHONY: bash fish git vim mutt byobu weechat clean install Windows Linux Other
+
