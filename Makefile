@@ -16,14 +16,13 @@ endif
 install:
 	@make $(UNAME)
 
-Linux: bash ssh fish git mutt byobu weechat vim
-Windows: bash ssh git vim
-Other: bash git vim 
+Linux: bash fish git mutt byobu weechat vim
+Windows: bash git vim
+Other: bash git vim
 
 clean:
 	@printf "$(RED)--- clean -----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" -D bash
-	stow -t "$$HOME" -D ssh
 	stow -t "$$HOME" -D fish
 	stow -t "$$HOME" -D git
 	stow -t "$$HOME" -D vim
@@ -34,10 +33,6 @@ clean:
 bash:
 	@printf "$(YELLOW)--- bash -----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" bash
-
-ssh:
-	@printf "$(YELLOW)--- ssh ------------------------------------------------\n$(RESET)"
-	stow -t "$$HOME" ssh
 
 fish:
 	@printf "$(YELLOW)--- fish -----------------------------------------------\n$(RESET)"
