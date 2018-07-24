@@ -1,3 +1,5 @@
 function fish_greeting
-	cat /var/run/motd
+    if test -f /var/run/motd
+        cat /var/run/motd
+    end
 end
