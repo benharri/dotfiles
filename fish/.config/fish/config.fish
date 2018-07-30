@@ -12,3 +12,6 @@ set -x GOPATH (/usr/local/go/bin/go env GOPATH)
 
 set -x fish_user_paths $fish_user_paths ~/bin /usr/local/go/bin /home/ben/.yarn/bin $GOPATH/bin
 
+set -x SSH_AGENT_PID ""
+set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+
