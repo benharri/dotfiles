@@ -16,7 +16,7 @@ endif
 install:
 	@make $(UNAME)
 
-Linux: bash fish git mutt byobu weechat vim
+Linux: bash fish git mutt byobu weechat vim gnupg
 Windows: bash git vim
 Other: bash git vim
 
@@ -29,6 +29,7 @@ clean:
 	stow -t "$$HOME" -D mutt
 	stow -t "$$HOME" -D byobu
 	stow -t "$$HOME" -D weechat
+	stow -t "$$HOME" -D gnupg
 
 bash:
 	@printf "$(YELLOW)--- bash -----------------------------------------------\n$(RESET)"
@@ -59,5 +60,9 @@ weechat:
 	@printf "$(YELLOW)--- weechat --------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" weechat
 
-.PHONY: bash fish git vim mutt byobu weechat clean install Windows Linux Other
+gnupg:
+	@printf "$(YELLOW)--- gnupg ----------------------------------------------\n$(RESET)"
+	stow -t "$$HOME" gnupg
+
+.PHONY: bash fish git vim mutt byobu weechat gnupg clean install Windows Linux Other
 
