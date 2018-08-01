@@ -62,6 +62,8 @@ weechat:
 
 gnupg:
 	@printf "$(YELLOW)--- gnupg ----------------------------------------------\n$(RESET)"
+	mkdir -p "$$HOME/.gnupg"
+	chmod 700 "$$HOME/.gnupg"
 	stow -t "$$HOME" gnupg
 
 .PHONY: bash fish git vim mutt byobu weechat gnupg clean install Windows Linux Other
