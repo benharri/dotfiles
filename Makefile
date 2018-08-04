@@ -46,6 +46,8 @@ git:
 vim:
 	@printf "$(YELLOW)--- vim ------------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" vim
+	[[ -f ~/.spf13-vim/bootstrap.sh ]] ||
+		git submodule update --init
 	~/.spf13-vim/bootstrap.sh
 
 mutt:
