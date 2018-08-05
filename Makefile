@@ -16,7 +16,7 @@ endif
 install:
 	@make $(UNAME)
 
-Linux: bash fish git mutt byobu weechat vim gnupg
+Linux: bash fish git mutt byobu weechat vim nvim gnupg
 Windows: bash git vim
 Other: bash git vim
 
@@ -26,6 +26,7 @@ clean:
 	stow -t "$$HOME" -D fish
 	stow -t "$$HOME" -D git
 	stow -t "$$HOME" -D vim
+	stow -t "$$HOME" -D nvim
 	stow -t "$$HOME" -D mutt
 	stow -t "$$HOME" -D byobu
 	stow -t "$$HOME" -D weechat
@@ -50,6 +51,10 @@ vim:
 		git submodule update --init
 	~/.spf13-vim/bootstrap.sh
 
+nvim:
+	@printf "$(YELLOW)--- nvim -----------------------------------------------\n$(RESET)"
+	stow -t "$$HOME" nvim
+
 mutt:
 	@printf "$(YELLOW)--- mutt -----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" mutt
@@ -68,5 +73,5 @@ gnupg:
 	chmod 700 "$$HOME/.gnupg"
 	stow -t "$$HOME" gnupg
 
-.PHONY: bash fish git vim mutt byobu weechat gnupg clean install Windows Linux Other
+.PHONY: bash fish git vim nvim mutt byobu weechat gnupg clean install Windows Linux Other
 
