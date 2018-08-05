@@ -1,6 +1,6 @@
 status --is-login; and status --is-interactive; and exec byobu-launcher
 
-set -xg EDITOR vim
+set -xg EDITOR nvim
 
 set -g theme_nerd_fonts yes
 set -g theme_color_scheme dark
