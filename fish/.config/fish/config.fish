@@ -6,11 +6,20 @@ set -g theme_nerd_fonts yes
 set -g theme_color_scheme dark
 set -g theme_display_date no
 
-set -x MAIL /home/ben/Maildir
+if test -d ~/Maildir
+  set -x MAIL ~/Maildir
+end
 
-set -x GOPATH (/usr/local/go/bin/go env GOPATH)
+if test -d /usr/local/go
+  set -x GOPATH (/usr/local/go/bin/go env GOPATH)
+end
 
-set -x fish_user_paths $fish_user_paths ~/bin /usr/local/go/bin ~/.yarn/bin $GOPATH/bin ~/.local/bin ~/.cargo/bin
+set user_paths ~/bin /usr/local/go/bin ~/.yarn/bin $GOPATH/bin ~/.local/bin ~/.cargo/bin /snap/bin
+for path in $user_paths
+  if test -d $path
+    set -x fish_user_paths $fish_user_paths $path
+  end
+end
 
 set -x SSH_AGENT_PID ""
 set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
