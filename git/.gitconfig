@@ -6,3 +6,5 @@
 	default = simple
 [commit]
 	gpgsign = true
+[pull]
+	ff = only
