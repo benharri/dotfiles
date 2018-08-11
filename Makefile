@@ -39,6 +39,7 @@ bash:
 fish:
 	@printf "$(YELLOW)--- fish -----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" fish
+	fish -c fisher
 
 git:
 	@printf "$(YELLOW)--- git ------------------------------------------------\n$(RESET)"

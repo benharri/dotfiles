@@ -1,0 +1,1 @@
+/home/ben/.config/fisherman/gitignore/gitignore.fish

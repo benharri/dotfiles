@@ -1,3 +1,4 @@
 function lg
-	lazygit $argv
+    lazygit $argv
 end
+

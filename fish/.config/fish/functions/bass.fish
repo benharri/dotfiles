@@ -1,0 +1,1 @@
+/home/ben/.config/fisherman/bass/functions/bass.fish
