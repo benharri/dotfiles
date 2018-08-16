@@ -1,0 +1,9 @@
+#!/bin/bash
+
+rename 's/ /-/g' ~/Pictures/*.png
+
+latest=$(ls -Art ~/Pictures | tail -n 1)
+
+pb "~/Pictures/$latest" | xclip -selection clipboard
+notify-send "on yr clipbrd"
+

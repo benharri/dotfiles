@@ -16,7 +16,7 @@ endif
 install:
 	@make $(UNAME)
 
-Linux: bash fish git mutt byobu weechat vim nvim gnupg
+Linux: bash fish git mutt byobu weechat vim nvim gnupg bin
 Windows: bash git vim
 Other: bash git vim
 
@@ -31,6 +31,7 @@ clean:
 	stow -t "$$HOME" -D byobu
 	stow -t "$$HOME" -D weechat
 	stow -t "$$HOME" -D gnupg
+	stow -t "$$HOME" -D bin
 
 bash:
 	@printf "$(YELLOW)--- bash -----------------------------------------------\n$(RESET)"
@@ -74,5 +75,10 @@ gnupg:
 	chmod 700 "$$HOME/.gnupg"
 	stow -t "$$HOME" gnupg
 
-.PHONY: bash fish git vim nvim mutt byobu weechat gnupg clean install Windows Linux Other
+bin:
+	@printf "$(YELLOW)--- bin ------------------------------------------------\n$(RESET)"
+	stow -t "$$HOME" bin
+
+
+.PHONY: bash fish git vim nvim mutt byobu weechat gnupg bin clean install Windows Linux Other
 
