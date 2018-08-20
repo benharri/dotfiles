@@ -22,7 +22,12 @@ for path in $user_paths
 end
 
 set -x SSH_AGENT_PID ""
-set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+if test -S $HOME/.gnupg/S.gpg-agent
+  set -x SSH_AUTH_SOCK $HOME/.gnupg/S.gpg-agent
+  set -x GPG_SOCK $HOME/.gnupg/S.gpg-agent
+else
+  set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
+end
 
 set -x BBJ_USER $USER
 
