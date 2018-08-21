@@ -14,7 +14,7 @@ if test -d /usr/local/go
   set -x GOPATH (/usr/local/go/bin/go env GOPATH)
 end
 
-set user_paths ~/bin /usr/local/go/bin ~/.yarn/bin $GOPATH/bin ~/.local/bin ~/.cargo/bin /snap/bin
+set user_paths ~/bin /usr/local/go/bin ~/.yarn/bin $GOPATH/bin ~/.local/bin ~/.cargo/bin /snap/bin ~/.fzf/bin
 for path in $user_paths
   if test -d $path
     set -x fish_user_paths $fish_user_paths $path
