@@ -1,0 +1,1 @@
+/home/ben/.config/fisherman/done/conf.d/done.fish
