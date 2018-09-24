@@ -25,7 +25,6 @@ alias cr='composer require'
 alias csu='composer self-update'
 alias cu='composer update'
 alias d='dirs -v | head -10'
-alias g=git
 alias ga='git add'
 alias gaa='git add --all'
 alias gapa='git add --patch'

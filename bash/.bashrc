@@ -132,10 +132,17 @@ export PS1="\[$(tput bold)\]\[$(tput setaf 2)\]\u\[$(tput setaf 6)\]@\[$(tput se
 brc() { vim ~/.bashrc; }
 tag() { shuf -n 1 ~/taglines.txt; }
 
+g() {
+    if (( $# == 0 )); then
+        git status
+    else
+        git "$@"
+    fi
+}
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
