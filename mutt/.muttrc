@@ -2,23 +2,3 @@ set editor=vim
 set sort = reverse-threads
 set sort_aux = last-date-received
 
-set mbox_type=Maildir
-
-set folder="~/Maildir"
-set mbox="~/Maildir"
-set spoolfile="~/Maildir"
-set timeout=30
-
-set record="+.Sent"
-set postponed="+.Drafts"
-
-mailboxes `echo -n "+ "; find ~/Maildir -maxdepth 1 -type d -name ".*" -printf "+%f' " `
-
-macro index c "<change-folder>?<toggle-mailboxes>" "open a different folder"
-macro pager c "<change-folder>?<toggle-mailboxes>" "open a different folder"
-
-macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
-macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
-
-macro compose A "<attach-message>?<toggle-mailboxes>" "attach message(s) to this message"
-
