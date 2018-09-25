@@ -29,6 +29,8 @@ set tabpagemax=50
 
 inoremap <C-U> <C-G>u<C-U>
 
+cmap w!! w !sudo tee % >/dev/null
+
 set rtp+=~/.fzf
 
 " vim:set ft=vim et sw=2:
