@@ -16,7 +16,7 @@ endif
 install:
 	@make $(UNAME)
 
-Linux: bash fish git mutt byobu weechat vim nvim gnupg bin
+Linux: bash fish git mutt byobu weechat vim nvim gnupg bin emacs
 Windows: bash git vim
 Other: bash git vim
 
@@ -32,6 +32,7 @@ clean:
 	stow -t "$$HOME" -D weechat
 	stow -t "$$HOME" -D gnupg
 	stow -t "$$HOME" -D bin
+	stow -t "$$HOME" -D emacs
 
 bash:
 	@printf "$(YELLOW)--- bash -----------------------------------------------\n$(RESET)"
@@ -76,6 +77,10 @@ bin:
 	@printf "$(YELLOW)--- bin ------------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" bin
 
+emacs:
+	@printf "$(YELLOW)--- emacs ----------------------------------------------\n$(RESET)"
+	git submodule update --init -- emacs/.emacs.d/evil
+	stow -t "$$HOME" emacs
 
-.PHONY: bash fish git vim nvim mutt byobu weechat gnupg bin clean install Windows Linux Other
+.PHONY: bash fish git vim nvim mutt byobu weechat gnupg bin emacs clean install Windows Linux Other
 

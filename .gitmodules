@@ -2,3 +2,6 @@
 	path = fish/.config/fish/nvm-wrapper
 	url = https://github.com/passcod/nvm-fish-wrapper
 
+[submodule "emacs/.emacs.d/evil"]
+	path = emacs/.emacs.d/evil
+	url = https://github.com/emacs-evil/evil
