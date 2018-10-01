@@ -1,0 +1,9 @@
+{
+    "editor.fontFamily": "IBM Plex Mono",
+    "editor.fontSize": 15,
+    "editor.wordWrap": "on",
+    "window.titleBarStyle": "custom",
+    "files.insertFinalNewline": true,
+    "terminal.external.linuxExec": "gnome-terminal",
+    "searchRipgrep.enable": true
+}

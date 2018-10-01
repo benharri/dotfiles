@@ -1,0 +1,15 @@
+<snippet>
+  <content><![CDATA[
+if(isset($_SESSION['msg']['error'])){
+  echo '<div class="alert_error"><p>' . $_SESSION['msg']['error'] . '</p></div>';
+}
+if(isset($_SESSION['msg']['success'])){
+  echo '<div class="alert_success"><p>' . $_SESSION['msg']['success'] . '</p></div>';
+}
+if(isset($_SESSION['msg'])) unset($_SESSION['msg']);
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>msgsession</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.php</scope>
+</snippet>

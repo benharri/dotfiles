@@ -1,0 +1,21 @@
+<snippet>
+  <content><![CDATA[
+function charCount(text_to_count_sel, counter_sel, maxCnt = 4000){
+    var setCounter = function(){
+        var remaining = maxCnt - $(text_to_count_sel).val().length;
+        if(remaining <= 0){
+            alert("You have surpassed the "+maxCnt+" character limit.");
+            $(text_to_count_sel).val($(text_to_count_sel).val().substring(0,maxCnt));
+            remaining = maxCnt - $(text_to_count_sel).val().length;
+        }
+        $(counter_sel).text(remaining + ' characters remaining.');
+    }
+    setCounter();
+    $(text_to_count_sel).on('change keyup', setCounter);
+}
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>jqcounter</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.javascript</scope>
+</snippet>

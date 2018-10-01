@@ -1,0 +1,20 @@
+<snippet>
+  <content><![CDATA[
+---
+title: $1
+publish_date: $2-$3-$4
+published: false
+image:
+  src: $5
+  alt: $6
+  caption: $7
+tags:
+  - $8
+---
+# Content goes here
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>blogpost</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>text.html.markdown</scope>
+</snippet>

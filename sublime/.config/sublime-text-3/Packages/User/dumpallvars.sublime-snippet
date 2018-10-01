@@ -1,0 +1,9 @@
+<snippet>
+  <content><![CDATA[
+echo '<pre>'; print_r(get_defined_vars()); echo '</pre>';
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>dumpallvars</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.php</scope>
+</snippet>

@@ -1,0 +1,11 @@
+<snippet>
+  <content><![CDATA[
+echo '<pre>$1 Dump ';
+print_r(${1:get_defined_vars()});
+echo '</pre>';
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>pprintvars</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.php</scope>
+</snippet>

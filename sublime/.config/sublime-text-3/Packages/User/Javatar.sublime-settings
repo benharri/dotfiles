@@ -1,0 +1,28 @@
+{
+	"jdk_version":
+	{
+		"JDK1.8.0u101":
+		{
+			"path": "C:\\Program Files\\Java\\jdk1.8.0_101\\bin",
+			"update": "101",
+			"version": "1.8.0"
+		},
+		"use": ""
+	},
+	"message_id": 20,
+	"project_data":
+	{
+		"2":
+		{
+			"folders":
+			[
+				{
+					"path": "C:\\Users\\bharr\\Google Drive\\College\\philos_backup"
+				},
+				{
+					"path": "C:\\Users\\bharr\\workspace"
+				}
+			]
+		}
+	}
+}

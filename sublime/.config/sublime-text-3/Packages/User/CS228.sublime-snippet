@@ -1,0 +1,21 @@
+<snippet>
+  <content><![CDATA[
+// Ben Harris CS228-02 Network Programming
+// $1
+
+#include <iostream>
+#include <cstdlib>
+#include <string>
+using namespace std;
+
+int main(int argc, char **argv){
+  $0
+  return 0;
+}
+
+]]></content>
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>CS228</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.c++</scope>
+</snippet>

@@ -1,0 +1,18 @@
+<snippet>
+    <content><![CDATA[
+///////////////////////////////////////////////////////////
+\$discord->registerCommand('${1:cmd_name}', function(\$msg, \$args) use (\$${2:include_in_scope}) {
+    $0
+}, [
+    'description' => '${3:description here}',
+    'usage' => '<${4:usage}>',
+    'aliases' => [
+        '$5',
+    ],
+]);
+]]></content>
+    <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+    <tabTrigger>cmd</tabTrigger>
+    <!-- Optional: Set a scope to limit where the snippet will trigger -->
+    <scope>source.php</scope>
+</snippet>

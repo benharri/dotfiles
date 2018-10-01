@@ -1,0 +1,15 @@
+<snippet>
+  <content><![CDATA[
+\$query = '${1:select * from dual}';
+\$query_data = \$bsp_ora->db_query(\$query);
+while(\$data_ob = oci_fetch_object(\$query_data)){
+  $2
+}
+]]></content>
+  <!-- PHP var names must be escaped otherwise it will be a snippet variable -->
+  <!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+  <tabTrigger>oraquery</tabTrigger>
+  <!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>source.php</scope>
+  <description>Basic query. INC_db.php must be included.</description>
+</snippet>
