@@ -2,10 +2,7 @@
 	"bootstrapped": true,
 	"in_process_packages":
 	[
-		"ApplySyntax",
-		"DocBlockr",
-		"LinqPad",
-		"SideBarEnhancements"
+		"LinqPad"
 	],
 	"installed_packages":
 	[

@@ -2,7 +2,7 @@
 	"always_show_minimap_viewport": true,
 	"atomic_save": false,
 	"bold_folder_labels": true,
-	"color_scheme": "Packages/Color Scheme - Default/Monokai.tmTheme",
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme-Darker.tmTheme",
 	"font_face": "IBM Plex Mono",
 	"font_size": 13,
 	"highlight_line": true,
@@ -10,9 +10,7 @@
 	"ignored_packages":
 	[
 		"All Autocomplete",
-		"ApplySyntax",
 		"Better CoffeeScript",
-		"DocBlockr",
 		"LaTeXing",
 		"LinqPad",
 		"Markdown",
