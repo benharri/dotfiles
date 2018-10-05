@@ -1,6 +1,6 @@
 {
     "editor.fontFamily": "IBM Plex Mono",
-    "editor.fontSize": 15,
+    "editor.fontSize": 16,
     "editor.wordWrap": "on",
     "window.titleBarStyle": "custom",
     "files.insertFinalNewline": true,
