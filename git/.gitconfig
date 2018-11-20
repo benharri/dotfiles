@@ -20,3 +20,9 @@
 	textconv = ansible-vault view
 	cachetextconv = false
 
+[sendemail]
+	smtpencryption = tls
+	smtpserver = mail.tilde.team
+	smtpserverport = 587
+	annotate = yes
+	smtpuser = ben
