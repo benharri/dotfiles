@@ -1,6 +1,7 @@
 status --is-login; and status --is-interactive; and exec byobu-launcher
 
 set -xg EDITOR nvim
+set -xg TZ 'America/Detroit'
 
 set -g theme_nerd_fonts yes
 set -g theme_color_scheme dark
@@ -21,7 +22,7 @@ for path in $user_paths
   end
 end
 
-set -x SSH_AGENT_PID ""
+#set -x SSH_AGENT_PID ""
 if test -S $HOME/.gnupg/S.gpg-agent
   set -x SSH_AUTH_SOCK $HOME/.gnupg/S.gpg-agent
   set -x GPG_SOCK $HOME/.gnupg/S.gpg-agent

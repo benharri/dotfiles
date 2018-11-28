@@ -1,3 +1,4 @@
 function is_git
-	git symbolic-ref HEAD > /dev/null ^&1
+    git rev-parse --verify HEAD >/dev/null ^&1
 end
+
