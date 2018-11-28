@@ -4,9 +4,10 @@ function is_git_dirty
 	is_git; or return 1
 
     if git diff-files --quiet --ignore-submodules 
-        or git diff-index --cached --quiet --ignore-submodules HEAD --
+        and git diff-index --cached --quiet --ignore-submodules HEAD --
         return 1
     else
+        # we're dirty
         return 0
     end
 end

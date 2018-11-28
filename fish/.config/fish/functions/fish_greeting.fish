@@ -3,3 +3,4 @@ function fish_greeting
         /bin/cat /var/run/motd
     end
 end
+

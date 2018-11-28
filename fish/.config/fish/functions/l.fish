@@ -2,3 +2,4 @@
 function l
 	ls -lah --group-directories-first $argv
 end
+

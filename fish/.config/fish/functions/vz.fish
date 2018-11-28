@@ -4,3 +4,4 @@ function vz
 		vim $file
 	end
 end
+
