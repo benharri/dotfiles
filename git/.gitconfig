@@ -26,3 +26,5 @@
 	smtpserverport = 587
 	annotate = yes
 	smtpuser = ben
+[alias]
+	lol = log --oneline --graph --decorate --all
