@@ -25,7 +25,7 @@ shopt -s checkwinsize
 
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
-#shopt -s globstar
+shopt -s globstar
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -85,7 +85,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -117,7 +117,17 @@ if ! shopt -oq posix; then
 fi
 
 
-
+## Bash Improvements ##
+# grabbed from:
+# https://tildegit.org/cdmnky/dotfiles/src/branch/master/bash/.bashrc
+# bash completion settings
+bind "set completion-ignore-case on" # ignore case in filenames
+bind "set completion-map-case on"    # treat hyphen the same as underscore
+bind "set show-all-if-ambiguous on"  # show all possibilities on the first tab
+# automatically add trailing slash when symlinking directories
+bind "set mark-symlinked-directories on"
+# cd into directory just by typing it in
+shopt -s autocd
 
 
 # MY STUFF!!
@@ -125,7 +135,10 @@ fi
 
 [ -r /home/ben/.byobu/prompt ] && . /home/ben/.byobu/prompt   #byobu-prompt#
 
-PATH=.:$PATH
+user_paths=(~/bin /usr/local/go/bin ~/.yarn/bin $GOPATH/bin ~/.local/bin ~/.cargo/bin /snap/bin ~/.fzf/bin)
+for path in ${user_paths[*]}; do
+    export PATH=$path:$PATH
+done
 
 export PS1="\[$(tput bold)\]\[$(tput setaf 2)\]\u\[$(tput setaf 6)\]@\[$(tput setaf 4)\]\h:\[$(tput setaf 2)\]\w\[$(tput setaf 4)\]\\$ \[$(tput sgr0)\]"
 
@@ -140,9 +153,11 @@ g() {
     fi
 }
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+if [ -d "$HOME/.nvm" ]; then
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
