@@ -1,1 +1,0 @@
-/home/ben/.config/fisherman/nvm/functions/__nvm_run.fish

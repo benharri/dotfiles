@@ -1,1 +1,0 @@
-/home/ben/.config/fisherman/getopts/getopts.fish

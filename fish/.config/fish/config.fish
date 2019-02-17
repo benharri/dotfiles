@@ -1,6 +1,11 @@
 status --is-login; and status --is-interactive; and exec byobu-launcher
 
-set -xg EDITOR nvim
+if type -q nvim > /dev/null
+  set -xg EDITOR nvim
+else 
+  set -xg EDITOR vim
+end
+
 set -xg TZ 'America/Detroit'
 
 set -g theme_nerd_fonts yes
