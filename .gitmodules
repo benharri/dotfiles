@@ -5,3 +5,6 @@
 [submodule "emacs/.emacs.d/evil"]
 	path = emacs/.emacs.d/evil
 	url = https://github.com/emacs-evil/evil
+[submodule "vim/.vim/bundle/quick-scope"]
+	path = vim/.vim/bundle/quick-scope
+	url = https://github.com/unblevable/quick-scope

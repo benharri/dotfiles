@@ -82,6 +82,7 @@ sublime:
 
 vim:
 	@printf "$(YELLOW)--- vim ------------------------------------------------\n$(RESET)"
+	git submodule update --init -- vim/.vim/bundle
 	stow -t "$$HOME" vim
 
 vscode:
