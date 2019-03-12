@@ -14,6 +14,9 @@ set nrformats-=octal
 
 set incsearch
 
+set number
+set numberwidth=4
+set updatetime=100
 set laststatus=2
 set ruler
 set wildmenu
