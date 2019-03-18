@@ -1,4 +1,5 @@
-# Defined in /home/ben/.config/fish/functions/l.fish @ line 1
+complete -c l -w ls
+
 function l
 	ls -lah --group-directories-first $argv
 end
