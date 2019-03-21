@@ -8,10 +8,6 @@ end
 
 set -xg TZ 'America/Detroit'
 
-set -g theme_nerd_fonts yes
-set -g theme_color_scheme dark
-set -g theme_display_date no
-
 if test -d ~/Maildir
   set -x MAIL ~/Maildir
 end
