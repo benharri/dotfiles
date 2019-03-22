@@ -132,6 +132,12 @@ shopt -s autocd
 
 # MY STUFF!!
 
+suicidePostCommand() {
+  if [ $? -ne 0 ]; then
+      echo "$(tput setaf 3)====$(tput setaf 1)$(tput bold)$(echo -n $(shuf -n1 ~/insults.txt))$(tput sgr0)$(tput setaf 3)====$(tput sgr0)"
+  fi
+}
+PROMPT_COMMAND=suicidePostCommand
 
 [ -r /home/ben/.byobu/prompt ] && . /home/ben/.byobu/prompt   #byobu-prompt#
 

@@ -33,3 +33,6 @@ end
 
 set -x BBJ_USER $USER
 
+# load postexec_insult
+postexec_insult
+
