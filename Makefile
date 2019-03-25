@@ -47,7 +47,7 @@ byobu:
 	@printf "$(YELLOW)--- byobu ----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" byobu
 
-fish:
+fish: fzf
 	@printf "$(YELLOW)--- fish -----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" fish
 
@@ -55,7 +55,7 @@ fzf:
 	@printf "$(YELLOW)--- fzf ------------------------------------------------\n$(RESET)"
 	git submodule update --init -- fzf/.fzf
 	stow -t "$$HOME" fzf
-	~/.fzf/install
+	~/.fzf/install --no-bash --no-zsh --no-completion --no-update-rc --key-bindings --64
 
 git:
 	@printf "$(YELLOW)--- git ------------------------------------------------\n$(RESET)"
