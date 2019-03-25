@@ -2,9 +2,6 @@
 	path = fish/.config/fish/nvm-wrapper
 	url = https://github.com/passcod/nvm-fish-wrapper
 
-[submodule "emacs/.emacs.d/evil"]
-	path = emacs/.emacs.d/evil
-	url = https://github.com/emacs-evil/evil
 [submodule "vim/.vim/bundle/quick-scope"]
 	path = vim/.vim/bundle/quick-scope
 	url = https://github.com/unblevable/quick-scope
@@ -20,3 +17,6 @@
 [submodule "vim/.vim/bundle/vim-gitgutter"]
 	path = vim/.vim/bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
+[submodule "fzf/.fzf"]
+	path = fzf/.fzf
+	url = https://github.com/junegunn/fzf

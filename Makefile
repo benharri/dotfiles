@@ -16,7 +16,7 @@ endif
 install:
 	@make $(UNAME)
 
-Linux: bash fish git mutt byobu weechat vim nvim gnupg bin emacs vscode sublime
+Linux: bash fzf fish git mutt byobu weechat vim nvim gnupg bin emacs vscode sublime
 Windows: bash git vim
 Other: bash git vim
 
@@ -25,7 +25,6 @@ clean:
 	stow -t "$$HOME" -D bash
 	stow -t "$$HOME" -D bin
 	stow -t "$$HOME" -D byobu
-	stow -t "$$HOME" -D emacs
 	stow -t "$$HOME" -D fish
 	stow -t "$$HOME" -D git
 	stow -t "$$HOME" -D gnupg
@@ -48,14 +47,15 @@ byobu:
 	@printf "$(YELLOW)--- byobu ----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" byobu
 
-emacs:
-	@printf "$(YELLOW)--- emacs ----------------------------------------------\n$(RESET)"
-	git submodule update --init -- emacs/.emacs.d/evil
-	stow -t "$$HOME" emacs
-
 fish:
 	@printf "$(YELLOW)--- fish -----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" fish
+
+fzf:
+	@printf "$(YELLOW)--- fzf ------------------------------------------------\n$(RESET)"
+	git submodule update --init -- fzf/.fzf
+	stow -t "$$HOME" fzf
+	~/.fzf/install
 
 git:
 	@printf "$(YELLOW)--- git ------------------------------------------------\n$(RESET)"
@@ -92,4 +92,4 @@ weechat:
 	@printf "$(YELLOW)--- weechat --------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" weechat
 
-.PHONY: bash fish git vim nvim mutt byobu weechat gnupg bin emacs vscode sublime clean install Windows Linux Other
+.PHONY: bash fzf fish git vim nvim mutt byobu weechat gnupg bin vscode sublime clean install Windows Linux Other
