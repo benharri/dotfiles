@@ -92,4 +92,8 @@ weechat:
 	@printf "$(YELLOW)--- weechat --------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" weechat
 
-.PHONY: bash fzf fish git vim nvim mutt byobu weechat gnupg bin vscode sublime clean install Windows Linux Other
+nuke:
+	@printf "$(YELLOW)--- nuking existing files ------------------------------\n$(RESET)"
+	rm -rf ~/.byobu ~/.config/fish ~/.fzf ~/.bash*
+
+.PHONY: bash fzf fish git vim nvim mutt byobu weechat gnupg bin vscode sublime clean install nuke Windows Linux Other
