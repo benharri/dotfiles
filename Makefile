@@ -16,7 +16,7 @@ endif
 install:
 	@make $(UNAME)
 
-Linux: bash fzf fish git mutt byobu weechat vim nvim gnupg bin emacs vscode sublime
+Linux: bash fzf fish git mutt byobu weechat vim nvim gnupg bin vscode sublime
 Windows: bash git vim
 Other: bash git vim
 
@@ -47,11 +47,11 @@ byobu:
 	@printf "$(YELLOW)--- byobu ----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" byobu
 
-fish: fzf
+fish:
 	@printf "$(YELLOW)--- fish -----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" fish
 
-fzf:
+fzf: fish
 	@printf "$(YELLOW)--- fzf ------------------------------------------------\n$(RESET)"
 	git submodule update --init -- fzf/.fzf
 	stow -t "$$HOME" fzf
@@ -93,7 +93,7 @@ weechat:
 	stow -t "$$HOME" weechat
 
 nuke:
-	@printf "$(YELLOW)--- nuking existing files ------------------------------\n$(RESET)"
+	@printf "$(RED)--- nuking existing files ------------------------------\n$(RESET)"
 	rm -rf ~/.byobu ~/.config/fish ~/.fzf ~/.bash*
 
 .PHONY: bash fzf fish git vim nvim mutt byobu weechat gnupg bin vscode sublime clean install nuke Windows Linux Other
