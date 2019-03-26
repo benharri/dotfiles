@@ -41,6 +41,7 @@ bash:
 
 bin:
 	@printf "$(YELLOW)--- bin ------------------------------------------------\n$(RESET)"
+	mkdir -p "$$HOME/bin"
 	stow -t "$$HOME" bin
 	
 byobu:
