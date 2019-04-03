@@ -23,7 +23,11 @@ for path in $my_paths
   end
 end
 
-#set -x SSH_AGENT_PID ""
+if test -f ~/.asdf/asdf.fish
+  source ~/.asdf/asdf.fish
+end
+
+set -x SSH_AGENT_PID ""
 if test -S $HOME/.gnupg/S.gpg-agent
   set -x SSH_AUTH_SOCK $HOME/.gnupg/S.gpg-agent
   set -x GPG_SOCK $HOME/.gnupg/S.gpg-agent
