@@ -82,6 +82,7 @@ sublime:
 
 vim:
 	@printf "$(YELLOW)--- vim ------------------------------------------------\n$(RESET)"
+	mkdir -p ~/.vim/undodir
 	git submodule update --init -- vim/.vim/bundle
 	stow -t "$$HOME" vim
 

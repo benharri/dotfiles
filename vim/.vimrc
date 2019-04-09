@@ -9,6 +9,8 @@ set smarttab
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set undofile
+set undodir=~/.vim/undodir
 
 set nrformats-=octal
 
