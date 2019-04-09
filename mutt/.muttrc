@@ -4,9 +4,9 @@ set sort_aux = last-date-received
 
 set mbox_type=Maildir
 
-set folder="~/Maildir"
-set mbox="~/Maildir"
-set spoolfile="~/Maildir"
+set folder="~/Mail"
+set mbox="~/Mail"
+set spoolfile="~/Mail"
 set timeout=30
 
 set record="+.Sent"
