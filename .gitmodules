@@ -20,3 +20,6 @@
 [submodule "fzf/.fzf"]
 	path = fzf/.fzf
 	url = https://github.com/junegunn/fzf
+[submodule "vim/.vim/bundle/vim-lastplace"]
+	path = vim/.vim/bundle/vim-lastplace
+	url = https://github.com/farmergreg/vim-lastplace
