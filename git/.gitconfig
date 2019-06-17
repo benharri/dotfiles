@@ -28,5 +28,7 @@
 	smtpuser = ben
 [alias]
 	lol = log --oneline --graph --decorate --all
+	joke = !curl -s https://raw.githubusercontent.com/EugeneKay/git-jokes/lulz/Jokes.txt | shuf -n1
+	dad = !curl https://icanhazdadjoke.com
 [rerere]
 	enabled = true
