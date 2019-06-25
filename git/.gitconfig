@@ -30,5 +30,9 @@
 	lol = log --oneline --graph --decorate --all
 	joke = !curl -s https://raw.githubusercontent.com/EugeneKay/git-jokes/lulz/Jokes.txt | shuf -n1
 	dad = !curl https://icanhazdadjoke.com
+	staged = diff --staged
+	ap = add --patch
+	local = log --oneline --no-merges ${1-$(git branch -lvv | perl -ne '/^\\\\*.*\\\\[(.*?)\\\\]/ and print \"$1\\n\"')}..HEAD
+	upstream = log --oneline --no-merges HEAD..${1-$(git branch -lvv | perl -ne '/^\\\\*.*\\\\[(.*?)\\\\]/ and print \"$1\\n\"')}
 [rerere]
 	enabled = true
