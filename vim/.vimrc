@@ -2,6 +2,9 @@ filetype plugin indent on
 
 syntax enable
 
+colo ron
+set guifont="Input"
+
 set autoindent
 set backspace=indent,eol,start
 set complete-=i
