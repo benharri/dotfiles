@@ -1,6 +1,6 @@
 function cat
     if type -q bat >/dev/null
-        bat $argv
+        bat -p $argv
     else
         command cat $argv
     end
