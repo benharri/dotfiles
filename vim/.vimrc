@@ -12,6 +12,18 @@ set smarttab
 set tabstop=4
 set shiftwidth=4
 set expandtab
+
+" swap settings
+set swapfile
+set directory^=~/.vim/swap//
+set writebackup
+set nobackup
+set backupcopy=auto
+" patch required to honor double slash
+if has("patch-8.1.0251")
+    " consolidate writebackups
+    set backupdir^=~/.vim/backup//
+end
 set undofile
 set undodir=~/.vim/undodir
 
@@ -37,6 +49,15 @@ set tabpagemax=50
 
 noremap 0 ^
 noremap ^ 0
+
+" shortcuts for 3way merge
+map <Leader>1 :diffget LOCAL<CR>
+map <Leader>2 :diffget BASE<CR>
+map <Leader>3 :diffget REMOTE<CR>
+
+if has("patch-8.1.0360")
+    set diffopt+=internal,algorithm:patience
+end
 
 inoremap <C-U> <C-G>u<C-U>
 
