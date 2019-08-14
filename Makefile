@@ -54,7 +54,7 @@ fish:
 
 fzf: fish
 	@printf "$(YELLOW)--- fzf ------------------------------------------------\n$(RESET)"
-	git submodule update --init -- fzf/.fzf
+	git submodule update --remote --init -- fzf/.fzf
 	stow -t "$$HOME" fzf
 	~/.fzf/install --no-bash --no-zsh --no-completion --no-update-rc --key-bindings --64
 
@@ -84,7 +84,7 @@ vim:
 	@printf "$(YELLOW)--- vim ------------------------------------------------\n$(RESET)"
 	mkdir -p ~/.vim/{undodir,swap,backup}
 	chmod 700 ~/.vim/{undodir,swap,backup}
-	git submodule update --init -- vim/.vim/bundle
+	git submodule update --remote --init -- vim/.vim/bundle
 	stow -t "$$HOME" vim
 
 vscode:
