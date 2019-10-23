@@ -23,3 +23,6 @@
 [submodule "vim/.vim/bundle/vim-lastplace"]
 	path = vim/.vim/bundle/vim-lastplace
 	url = https://github.com/farmergreg/vim-lastplace
+[submodule "vim/.vim/bundle/vim-fish"]
+	path = vim/.vim/bundle/vim-fish
+	url = https://github.com/dag/vim-fish

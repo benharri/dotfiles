@@ -1,3 +1,8 @@
+" posix compatibility
+if &shell =~# 'fish$'
+    set shell=sh
+endif
+
 filetype plugin indent on
 
 syntax enable
