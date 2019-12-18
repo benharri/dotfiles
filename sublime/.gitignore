@@ -1,7 +1,0 @@
-*.last-run
-*.ca-list
-*.ca-bundle
-*.system-ca-bundle
-*.cache/
-*.ca-certs/
-

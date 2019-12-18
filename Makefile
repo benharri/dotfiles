@@ -16,7 +16,7 @@ endif
 install:
 	@make $(UNAME)
 
-Linux: bash fzf fish git mutt byobu weechat vim nvim gnupg bin vscode sublime
+Linux: bash fzf fish git mutt byobu weechat vim nvim gnupg bin
 Windows: bash git vim
 Other: bash git vim
 
@@ -30,9 +30,7 @@ clean:
 	stow -t "$$HOME" -D gnupg
 	stow -t "$$HOME" -D mutt
 	stow -t "$$HOME" -D nvim
-	stow -t "$$HOME" -D sublime
 	stow -t "$$HOME" -D vim
-	stow -t "$$HOME" -D vscode
 	stow -t "$$HOME" -D weechat
 
 bash:
@@ -76,20 +74,12 @@ nvim:
 	@printf "$(YELLOW)--- nvim -----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" nvim
 
-sublime:
-	@printf "$(YELLOW)--- sublime --------------------------------------------\n$(RESET)"
-	stow -t "$$HOME" sublime
-
 vim:
 	@printf "$(YELLOW)--- vim ------------------------------------------------\n$(RESET)"
 	mkdir -p ~/.vim/{undodir,swap,backup}
 	chmod 700 ~/.vim/{undodir,swap,backup}
 	git submodule update --remote --init -- vim/.vim/bundle
 	stow -t "$$HOME" vim
-
-vscode:
-	@printf "$(YELLOW)--- vscode ---------------------------------------------\n$(RESET)"
-	stow -t "$$HOME" vscode
 
 weechat:
 	@printf "$(YELLOW)--- weechat --------------------------------------------\n$(RESET)"
@@ -99,4 +89,4 @@ nuke:
 	@printf "$(RED)--- nuking existing files ------------------------------\n$(RESET)"
 	rm -rf ~/.byobu ~/.config/fish ~/.fzf ~/.bash*
 
-.PHONY: bash fzf fish git vim nvim mutt byobu weechat gnupg bin vscode sublime clean install nuke Windows Linux Other
+.PHONY: bash fzf fish git vim nvim mutt byobu weechat gnupg bin clean install nuke Windows Linux Other

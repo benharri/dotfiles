@@ -1,6 +1,0 @@
-[
-  {"keys": ["ctrl+shift+o"], "command": "prompt_open_folder"},
-  {"keys": ["ctrl+,"], "command": "open_file", "args": {"file": "${packages}/User/Preferences.sublime-settings"}},
-  {"keys": ["ctrl+alt+p"], "command": "prompt_select_workspace"},
-  {"keys": ["alt+m"], "command": "toggle_menu"}
-]
