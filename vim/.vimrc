@@ -10,6 +10,7 @@ syntax enable
 colo ron
 set guifont="Input"
 
+set spell
 set autoindent
 set backspace=indent,eol,start
 set complete-=i
