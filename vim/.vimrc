@@ -8,9 +8,10 @@ filetype plugin indent on
 syntax enable
 
 colo ron
-set guifont="Input"
+set guifont="JetBrains Mono"
+set noerrorbells visualbell t_vb=
+set mouse+=a
 
-set spell
 set autoindent
 set backspace=indent,eol,start
 set complete-=i
@@ -35,9 +36,12 @@ set undodir=~/.vim/undodir
 
 set nrformats-=octal
 
+set ignorecase
+set smartcase
 set incsearch
 
 set number
+set relativenumber
 set numberwidth=4
 set updatetime=100
 set laststatus=2
@@ -55,6 +59,8 @@ set tabpagemax=50
 
 noremap 0 ^
 noremap ^ 0
+
+nmap Q <Nop> " 'Q' in normal mode enters Ex mode. you almost never want this
 
 " shortcuts for 3way merge
 map <Leader>1 :diffget LOCAL<CR>
