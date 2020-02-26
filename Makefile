@@ -16,7 +16,7 @@ endif
 install:
 	@make $(UNAME)
 
-Linux: bash fzf fish git mutt byobu weechat vim nvim gnupg bin
+Linux: bash bin byobu fish git gnupg lf mutt nvim vim weechat
 Windows: bash git vim
 Other: bash git vim
 
@@ -28,6 +28,7 @@ clean:
 	stow -t "$$HOME" -D fish
 	stow -t "$$HOME" -D git
 	stow -t "$$HOME" -D gnupg
+	stow -t "$$HOME" -D lf/.config
 	stow -t "$$HOME" -D mutt
 	stow -t "$$HOME" -D nvim
 	stow -t "$$HOME" -D vim
@@ -37,7 +38,7 @@ bash:
 	@printf "$(YELLOW)--- bash -----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" bash
 
-bin:
+bin: lf
 	@printf "$(YELLOW)--- bin ------------------------------------------------\n$(RESET)"
 	mkdir -p "$$HOME/bin"
 	stow -t "$$HOME" bin
@@ -66,6 +67,13 @@ gnupg:
 	chmod 700 "$$HOME/.gnupg"
 	stow -t "$$HOME" gnupg
 
+lf:
+	@printf "$(YELLOW)--- lf --------------------------------------------------\n$(RESET)"
+	git submodule update --remote --init -- lf/lf
+	cd lf/lf; CGO_ENABLED=0 go build -ldflags="-s -w" -o ../../bin/bin/lf
+	mkdir -p ~/.trash
+	stow -t "$$HOME" lf
+
 mutt:
 	@printf "$(YELLOW)--- mutt -----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" mutt
@@ -89,4 +97,4 @@ nuke:
 	@printf "$(RED)--- nuking existing files ------------------------------\n$(RESET)"
 	rm -rf ~/.byobu ~/.config/fish ~/.fzf ~/.bash*
 
-.PHONY: bash fzf fish git vim nvim mutt byobu weechat gnupg bin clean install nuke Windows Linux Other
+.PHONY: bash fzf fish git vim nvim lf mutt byobu weechat gnupg bin clean install nuke Windows Linux Other
