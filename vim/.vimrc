@@ -71,6 +71,10 @@ if has("patch-8.1.0360")
     set diffopt+=internal,algorithm:patience
 end
 
+set hidden
+nnoremap <C-N> :bnext<CR>
+nnoremap <C-P> :bprev<CR>
+
 inoremap <C-U> <C-G>u<C-U>
 
 cmap w!! w !sudo tee % >/dev/null

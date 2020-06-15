@@ -29,3 +29,6 @@
 [submodule "lf/lf"]
 	path = lf/lf
 	url = https://github.com/gokcehan/lf
+[submodule "vim/.vim/bundle/vim-airline"]
+	path = vim/.vim/bundle/vim-airline
+	url = https://github.com/vim-airline/vim-airline
