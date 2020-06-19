@@ -8,6 +8,7 @@
 
 [commit]
 	gpgsign = true
+	verbose = true
 
 [pull]
 	ff = only
