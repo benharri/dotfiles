@@ -16,7 +16,7 @@ endif
 install:
 	@make $(UNAME)
 
-Linux: bash bin byobu fish git gnupg lf mutt nvim vim weechat
+Linux: bash bin byobu fish git gnupg mutt nvim vim weechat
 Windows: bash git vim
 Other: bash git vim
 
@@ -28,7 +28,6 @@ clean:
 	stow -t "$$HOME" -D fish
 	stow -t "$$HOME" -D git
 	stow -t "$$HOME" -D gnupg
-	stow -t "$$HOME" -D lf/.config
 	stow -t "$$HOME" -D mutt
 	stow -t "$$HOME" -D nvim
 	stow -t "$$HOME" -D vim
@@ -38,7 +37,7 @@ bash:
 	@printf "$(YELLOW)--- bash -----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" bash
 
-bin: lf
+bin:
 	@printf "$(YELLOW)--- bin ------------------------------------------------\n$(RESET)"
 	mkdir -p "$$HOME/bin"
 	stow -t "$$HOME" bin
