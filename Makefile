@@ -51,12 +51,6 @@ fish:
 	@printf "$(YELLOW)--- fish -----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" fish
 
-fzf: fish
-	@printf "$(YELLOW)--- fzf ------------------------------------------------\n$(RESET)"
-	git submodule update --remote --init -- fzf/.fzf
-	stow -t "$$HOME" fzf
-	~/.fzf/install --no-bash --no-zsh --no-completion --no-update-rc --key-bindings --64
-
 git:
 	@printf "$(YELLOW)--- git ------------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" git
@@ -66,13 +60,6 @@ gnupg:
 	mkdir -p "$$HOME/.gnupg"
 	chmod 700 "$$HOME/.gnupg"
 	stow -t "$$HOME" gnupg
-
-lf:
-	@printf "$(YELLOW)--- lf --------------------------------------------------\n$(RESET)"
-	git submodule update --remote --init -- lf/lf
-	cd lf/lf; CGO_ENABLED=0 go build -ldflags="-s -w" -o ../../bin/bin/lf
-	mkdir -p ~/.trash
-	stow -t "$$HOME" lf
 
 mutt:
 	@printf "$(YELLOW)--- mutt -----------------------------------------------\n$(RESET)"
@@ -97,4 +84,4 @@ nuke:
 	@printf "$(RED)--- nuking existing files ------------------------------\n$(RESET)"
 	rm -rf ~/.byobu ~/.config/fish ~/.fzf ~/.bash*
 
-.PHONY: bash fzf fish git vim nvim lf mutt byobu weechat gnupg bin clean install nuke Windows Linux Other
+.PHONY: bash fish git vim nvim mutt byobu weechat gnupg bin clean install nuke Windows Linux Other

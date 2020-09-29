@@ -1,7 +1,3 @@
-[submodule "fish/.config/fish/nvm-wrapper"]
-	path = fish/.config/fish/nvm-wrapper
-	url = https://github.com/passcod/nvm-fish-wrapper
-
 [submodule "vim/.vim/bundle/quick-scope"]
 	path = vim/.vim/bundle/quick-scope
 	url = https://github.com/unblevable/quick-scope
@@ -17,18 +13,12 @@
 [submodule "vim/.vim/bundle/vim-gitgutter"]
 	path = vim/.vim/bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
-[submodule "fzf/.fzf"]
-	path = fzf/.fzf
-	url = https://github.com/junegunn/fzf
 [submodule "vim/.vim/bundle/vim-lastplace"]
 	path = vim/.vim/bundle/vim-lastplace
 	url = https://github.com/farmergreg/vim-lastplace
 [submodule "vim/.vim/bundle/vim-fish"]
 	path = vim/.vim/bundle/vim-fish
 	url = https://github.com/dag/vim-fish
-[submodule "lf/lf"]
-	path = lf/lf
-	url = https://github.com/gokcehan/lf
 [submodule "vim/.vim/bundle/vim-airline"]
 	path = vim/.vim/bundle/vim-airline
 	url = https://github.com/vim-airline/vim-airline
