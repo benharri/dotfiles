@@ -1,23 +1,14 @@
-status --is-login; and status --is-interactive; and exec byobu-launcher
+status --is-login && status --is-interactive && exec byobu-launcher
 
-if type -q nvim > /dev/null
-  set -xg EDITOR nvim
-else 
-  set -xg EDITOR vim
-end
-
+set -xg EDITOR vim
 set -xg TZ 'America/Detroit'
 
 if test -d ~/Maildir
   set -x MAIL ~/Maildir
 end
 
-if test -d /usr/local/go
-  set -x GOPATH (/usr/local/go/bin/go env GOPATH)
-end
-
-for i in ~/bin /usr/local/go/bin ~/.yarn/bin $GOPATH/bin ~/.local/bin ~/.cargo/bin /snap/bin ~/.fzf/bin
-  if test -d $i; and not contains $i $PATH
+for i in ~/bin ~/.yarn/bin ~/.local/bin ~/.cargo/bin
+  if test -d $i && not contains $i $PATH
     set -x fish_user_paths $fish_user_paths $i
   end
 end
