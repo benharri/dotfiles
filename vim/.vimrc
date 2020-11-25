@@ -7,7 +7,7 @@ filetype plugin indent on
 
 syntax enable
 
-colo ron
+colo elflord
 set guifont="JetBrains Mono"
 set noerrorbells visualbell t_vb=
 set mouse+=a
