@@ -47,6 +47,7 @@ set updatetime=100
 set laststatus=2
 set ruler
 set wildmenu
+set showcmd
 
 set display+=lastline
 
