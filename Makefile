@@ -71,6 +71,7 @@ nvim:
 
 pb:
 	@printf "$(YELLOW)--- pb -------------------------------------------------\n$(RESET)"
+	git submodule update --remote --init -- pb
 	$(MAKE) -C pb PREFIX=~/.local install
 
 vim:
