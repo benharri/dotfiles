@@ -13,6 +13,9 @@
 [pull]
 	ff = only
 
+[diff]
+    colorMoved = default
+
 [diff "gpg"]
 	textconv = gpg --no-tty --decrypt
 	cachetextconv = false
@@ -35,6 +38,7 @@
 	ap = add --patch
 	local = log --oneline --no-merges ${1-$(git branch -lvv | perl -ne '/^\\\\*.*\\\\[(.*?)\\\\]/ and print \"$1\\n\"')}..HEAD
 	upstream = log --oneline --no-merges HEAD..${1-$(git branch -lvv | perl -ne '/^\\\\*.*\\\\[(.*?)\\\\]/ and print \"$1\\n\"')}
+	cv = commit --verbose
 [rerere]
 	enabled = true
 [merge]
