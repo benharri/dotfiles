@@ -1,5 +1,3 @@
-status --is-login && status --is-interactive && exec byobu-launcher
-
 set -xg EDITOR vim
 set -xg TZ 'America/Detroit'
 
@@ -26,6 +24,13 @@ end
 
 set -x BBJ_USER $USER
 
+# add dotnet completions if needed
+if status --is-interactive && type -q dotnet
+  complete -f -c dotnet -a "(dotnet complete)"
+end
+
 # load postexec_insult
 postexec_insult
+
+status --is-login && status --is-interactive && exec byobu-launcher
 
