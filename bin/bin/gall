@@ -1,0 +1,11 @@
+#!/bin/sh
+
+repos=$(find ~/workspace -type d -name .git)
+
+for repo in $repos; do
+    dir=$(dirname "$repo")
+    printf "%s\n" "$(basename "$dir")"
+    git -C "$dir" "$@"
+    printf "\n"
+done
+
