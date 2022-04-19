@@ -1,3 +1,3 @@
 function cwhois
-whois -h bgp.tools " -v $argv"
+    whois -h bgp.tools " -v $argv"
 end
