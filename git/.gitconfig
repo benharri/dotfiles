@@ -52,3 +52,5 @@
 	conflictstyle = diff3
 [mergetool]
 	prompt = false
+[core]
+	excludesfile = /home/ben/.gitignore
