@@ -7,7 +7,7 @@
 	default = simple
 
 [commit]
-	gpgsign = true
+	gpgsign = false
 	verbose = true
 
 [pull]
@@ -54,3 +54,8 @@
 	prompt = false
 [core]
 	excludesfile = /home/ben/.gitignore
+[url "git@salsa.debian.org:"]
+	pushInsteadOf = https://salsa.debian.org/
+	insteadOf = salsa:
+[url "git@bhh.sh:repos/"]
+	pushInsteadOf = https://git.bhh.sh/
