@@ -4,9 +4,11 @@ from sys import argv, exit, stderr
 
 if len(argv) == 2:
     try:
-        print(HTTPStatus(int(argv[1])).name.title().replace("_", " "))
+        status = HTTPStatus(int(argv[1]))
+        print(status.phrase)
+        print(status.description)
     except ValueError:
-        print("Not a valid HTTP status code", file=stderr)
+        print("Invalid HTTP status code", file=stderr)
         exit(1)
 else:
     print(f"{argv[0]} [code] to print the name of the HTTP status code")
