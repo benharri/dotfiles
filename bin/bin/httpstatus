@@ -1,0 +1,12 @@
+#!/usr/bin/env python3
+from http import HTTPStatus
+from sys import argv, exit, stderr
+
+if len(argv) == 2:
+    try:
+        print(HTTPStatus(int(argv[1])).name.title().replace("_", " "))
+    except ValueError:
+        print("Not a valid HTTP status code", file=stderr)
+        exit(1)
+else:
+    print(f"{argv[0]} [code] to print the name of the HTTP status code")
