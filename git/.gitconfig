@@ -1,17 +1,17 @@
 [user]
-	email = ben@tilde.team
-	name = Ben Harris
-	signingkey = FC2255B7BBC7EABD4EFAFA1068907D8BCCD85A5A
+    email = ben@tilde.team
+    name = Ben Harris
+    signingkey = FC2255B7BBC7EABD4EFAFA1068907D8BCCD85A5A
 
 [push]
-	default = simple
+    default = simple
 
 [commit]
-	gpgsign = false
-	verbose = true
+    gpgsign = false
+    verbose = true
 
 [pull]
-	ff = only
+    ff = only
 
 [pager]
     diff = diff-highlight | less
@@ -23,41 +23,46 @@
     colorMoved = default
 
 [diff "gpg"]
-	textconv = gpg --no-tty --decrypt
-	cachetextconv = false
+    textconv = gpg --no-tty --decrypt
+    cachetextconv = false
 
 [diff "ansible-vault"]
-	textconv = ansible-vault view
-	cachetextconv = false
+    textconv = ansible-vault view
+    cachetextconv = false
 
 [sendemail]
-	smtpencryption = tls
-	smtpserver = mail.tilde.team
-	smtpserverport = 587
-	annotate = yes
-	smtpuser = ben
+    smtpencryption = tls
+    smtpserver = mail.tilde.team
+    smtpserverport = 587
+    smtpuser = ben
+    annotate = yes
 [alias]
-	lol = log --oneline --graph --decorate --all
-	joke = !curl -s https://raw.githubusercontent.com/EugeneKay/git-jokes/lulz/Jokes.txt | shuf -n1
-	dad = !curl https://icanhazdadjoke.com
-	staged = diff --staged
-	ap = add --patch
-	local = log --oneline --no-merges ${1-$(git branch -lvv | perl -ne '/^\\\\*.*\\\\[(.*?)\\\\]/ and print \"$1\\n\"')}..HEAD
-	upstream = log --oneline --no-merges HEAD..${1-$(git branch -lvv | perl -ne '/^\\\\*.*\\\\[(.*?)\\\\]/ and print \"$1\\n\"')}
-	cv = commit --verbose
+    lol = log --oneline --graph --decorate --all
+    joke = !curl -s https://raw.githubusercontent.com/EugeneKay/git-jokes/lulz/Jokes.txt | shuf -n1
+    dad = !curl https://icanhazdadjoke.com
+    staged = diff --staged
+    ap = add --patch
+    cv = commit --verbose
+    local = log --oneline --no-merges ${1-$(git branch -lvv | perl -ne '/^\\\\*.*\\\\[(.*?)\\\\]/ and print \"$1\\n\"')}..HEAD
+    upstream = log --oneline --no-merges HEAD..${1-$(git branch -lvv | perl -ne '/^\\\\*.*\\\\[(.*?)\\\\]/ and print \"$1\\n\"')}
+
 [rerere]
-	enabled = true
+    enabled = true
 [merge]
-	tool = vimdiff
-	conflictstyle = diff3
+    tool = vimdiff
+    conflictstyle = diff3
 [mergetool]
-	prompt = false
+    prompt = false
+
 [core]
-	excludesfile = /home/ben/.gitignore
+    pager = diff-highlight | less
+    excludesfile = /home/ben/.gitignore
+
 [url "git@salsa.debian.org:"]
-	pushInsteadOf = https://salsa.debian.org/
-	insteadOf = salsa:
+    pushInsteadOf = https://salsa.debian.org/
+    insteadOf = salsa:
 [url "git@bhh.sh:repos/"]
-	pushInsteadOf = https://git.bhh.sh/
+    pushInsteadOf = https://git.bhh.sh/
+
 [init]
-	defaultBranch = main
+    defaultBranch = main
