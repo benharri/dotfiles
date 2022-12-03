@@ -78,7 +78,7 @@ vim:
 	@printf "$(YELLOW)--- vim ------------------------------------------------\n$(RESET)"
 	mkdir -p ~/.vim/{undodir,swap,backup}
 	chmod 700 ~/.vim/{undodir,swap,backup}
-	git submodule update --remote --init -- vim/.vim/bundle
+	git submodule update --remote --init -- vim/.vim/pack/plugins
 	stow -t "$$HOME" vim
 
 weechat:

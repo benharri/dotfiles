@@ -82,8 +82,6 @@ cmap w!! w !sudo tee % >/dev/null
 
 set rtp+=~/.fzf
 
-execute pathogen#infect()
-
 let g:qs_highlight_on_keys = ['f', 'F', 't', 'T']
 
 " vim:set ft=vim et sw=2:

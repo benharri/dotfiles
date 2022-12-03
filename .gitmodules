@@ -1,26 +1,26 @@
 [submodule "vim/.vim/bundle/quick-scope"]
-	path = vim/.vim/bundle/quick-scope
+	path = vim/.vim/pack/plugins/start/quick-scope
 	url = https://github.com/unblevable/quick-scope
 [submodule "vim/.vim/bundle/vim-fugitive"]
-	path = vim/.vim/bundle/vim-fugitive
+	path = vim/.vim/pack/plugins/start/vim-fugitive
 	url = https://github.com/tpope/vim-fugitive
 [submodule "vim/.vim/bundle/vim-commentary"]
-	path = vim/.vim/bundle/vim-commentary
+	path = vim/.vim/pack/plugins/start/vim-commentary
 	url = https://github.com/tpope/vim-commentary
 [submodule "vim/.vim/bundle/vim-surround"]
-	path = vim/.vim/bundle/vim-surround
+	path = vim/.vim/pack/plugins/start/vim-surround
 	url = https://github.com/tpope/vim-surround
 [submodule "vim/.vim/bundle/vim-gitgutter"]
-	path = vim/.vim/bundle/vim-gitgutter
+	path = vim/.vim/pack/plugins/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter
 [submodule "vim/.vim/bundle/vim-lastplace"]
-	path = vim/.vim/bundle/vim-lastplace
+	path = vim/.vim/pack/plugins/start/vim-lastplace
 	url = https://github.com/farmergreg/vim-lastplace
 [submodule "vim/.vim/bundle/vim-fish"]
-	path = vim/.vim/bundle/vim-fish
+	path = vim/.vim/pack/plugins/start/vim-fish
 	url = https://github.com/dag/vim-fish
 [submodule "vim/.vim/bundle/vim-airline"]
-	path = vim/.vim/bundle/vim-airline
+	path = vim/.vim/pack/plugins/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline
 [submodule "pb"]
 	path = pb
