@@ -46,8 +46,5 @@ if status --is-interactive && type -q dotnet
   complete -f -c dotnet -a "(dotnet complete)"
 end
 
-# load postexec_insult
-postexec_insult
-
 status --is-login && status --is-interactive && exec byobu-launcher
 
