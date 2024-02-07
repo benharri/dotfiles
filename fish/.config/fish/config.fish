@@ -5,10 +5,8 @@ if test -d ~/Maildir
   set -x MAIL ~/Maildir
 end
 
-for i in ~/bin ~/.local/bin ~/.rbenv/bin ~/.rbenv/shims ~/.cargo/bin ~/.yarn/bin
-  if test -d $i
-    fish_add_path --path $i
-  end
+for i in ~/bin ~/.local/bin ~/.rbenv/bin ~/.rbenv/shims ~/.cargo/bin ~/.yarn/bin ~/go/bin ~/.dotnet/tools
+  fish_add_path --path $i
 end
 
 # add rbenv paths
@@ -40,6 +38,8 @@ else
 end
 
 set -x BBJ_USER $USER
+set -x DEBEMAIL ben@tilde.team
+set -x DEBFULLNAME "Ben Harris"
 
 # add dotnet completions if needed
 if status --is-interactive && type -q dotnet
