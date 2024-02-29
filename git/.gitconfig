@@ -47,7 +47,7 @@
     upstream = log --oneline --no-merges HEAD..${1-$(git branch -lvv | perl -ne '/^\\\\*.*\\\\[(.*?)\\\\]/ and print \"$1\\n\"')}
 
 [rerere]
-    enabled = true
+	enabled = true
 [merge]
     tool = vimdiff
     conflictstyle = diff3
@@ -66,3 +66,9 @@
 
 [init]
     defaultBranch = main
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
