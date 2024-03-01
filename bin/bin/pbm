@@ -1,0 +1,12 @@
+#!/bin/sh
+
+pbm() {
+    curl -s https://pinballmap.com/api/v1/locations/$1/machine_details.json\?machines_only=1 \
+        | jq -r '.machines | .[]' \
+        > ~/public_html/pin/$2.txt
+}
+
+pbm 9699 coinslot
+pbm 13280 rightbrain
+
+
