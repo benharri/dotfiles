@@ -72,3 +72,5 @@
 	sort = -committerdate
 [tag]
 	sort = version:refname
+[safe]
+	directory = *
