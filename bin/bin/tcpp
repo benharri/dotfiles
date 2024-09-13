@@ -1,0 +1,75 @@
+#!/bin/sh
+
+# get players + names
+playersjson=$(curl -s "https://app.matchplay.events/api/tournaments/$1?includePlayers=1" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json")
+
+# pull finals id from main tourney
+finalsId=$(printf %s "$playersjson" | jq -r ".data.linkedTournamentId")
+
+# get standings for finals
+standingsids=$(curl -s "https://app.matchplay.events/api/tournaments/$finalsId/standings" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    | jq -r '.[] | .playerId')
+
+# look up ifpa tourneys in TC for the date from matchplay
+d=$(printf %s "$playersjson" | jq -r ".data.startUtc")
+shortdate=$(date --date "$d" +"%B %-d")
+ifpa=$(curl -s 'https://api.ifpapinball.com/v1/calendar/search?api_key=GET_YOUR_OWN&address=Traverse%20City&m=3')
+ifpatourney=$(printf %s "$ifpa" | jq -r ".calendar[] | select(.start_date == \"$(date --date "$d" +"%F")\").tournament_id")
+
+# set author, excerpt, and categories based on day-of-week
+author=1
+excerpt="Results for $shortdate tourney"
+
+case $(date --date "$d" +"%a") in
+    Thu)
+        categories="58,54"
+        ;;
+    Mon)
+        categories="58,52"
+        ;;
+    Sun)
+        categories="58,51"
+        author=8
+        excerpt="Results for the $shortdate Belles tourney"
+        ;;
+    *)
+        categories="4"
+        ;;
+esac
+
+# pull names from original tournament json by ids from standings
+# gotta be a better way to do this
+player1=$(printf %s "$playersjson" | jq -r ".data.players | .[] | select(.playerId == $(printf %s "$standingsids" | head -n1 | tail -n1)).name")
+player2=$(printf %s "$playersjson" | jq -r ".data.players | .[] | select(.playerId == $(printf %s "$standingsids" | head -n2 | tail -n1)).name")
+player3=$(printf %s "$playersjson" | jq -r ".data.players | .[] | select(.playerId == $(printf %s "$standingsids" | head -n3 | tail -n1)).name")
+player4=$(printf %s "$playersjson" | jq -r ".data.players | .[] | select(.playerId == $(printf %s "$standingsids" | head -n4 | tail -n1)).name")
+
+# create the post draft and save the id
+postid=$(sudo -Hu www-data wp --path=/var/www/tcpinball.org \
+    post create \
+    --post_author="$author" \
+    --post_category="$categories" \
+    --post_title="$shortdate Results" \
+    --post_excerpt="$excerpt" \
+    --post_status=draft \
+    --porcelain \
+    --post_content="<!-- wp:paragraph -->
+<p>Format: Group Match Play</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:table {\"hasFixedLayout\":false} -->
+<figure class=\"wp-block-table\"><table><thead><tr><th>Place</th><th>Player</th></tr></thead><tbody><tr><td>1st</td><td>$player1</td></tr><tr><td>2nd</td><td>$player2</td></tr><tr><td>3rd</td><td>$player3</td></tr><tr><td>4th</td><td>$player4</td></tr></tbody></table></figure>
+<!-- /wp:table -->
+
+<!-- wp:paragraph -->
+<p>See the full results on <a href=\"https://app.matchplay.events/tournaments/$1\">Match Play</a> - <a href=\"https://app.matchplay.events/tournaments/$finalsId\">Finals</a> (<a href=\"https://www.ifpapinball.com/tournaments/view.php?t=$ifpatourney\">IFPA</a>).</p>
+<!-- /wp:paragraph -->
+")
+
+# drop a link to the editor so i can attach the featured pic before publishing
+printf "https://tcpinball.org/wp-admin/post.php?action=edit&post=%s\n" "$postid"
+

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# covidate version 2024.01
+# Copyright (C) 2024 anelki
+#
+# this is free software licensed under the anelki public license
+#
+# See the README and LICENSE files for further information.
+#
+# with thanks/apologies to jwz: https://www.jwz.org/blog/2020/08/the-date-is-now-tuesday-march-178th-2020/
+# shows the date as the number of days since 2020-03-01
+# and earlier version included 2020-03-11 in the calc (so 296 total days).
+# corrected, as jwz pointed out: https://twitter.com/jwz/status/1366475255976398848
+
+LC_TIME=C.UTF-8
+echo -e "\n\a   Today is...$(date +"%A"), March $(expr 1401 + $(date +"%j")), 2020 at $(date +"%T") \n   Let's make it a \033[1m✨great✨\033[0m day! \n\n   This year will be Different...in a good way I'm sure...\n"
+exit 0
+

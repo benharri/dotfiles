@@ -1,0 +1,6 @@
+#!/bin/sh
+
+wp --path=/var/www/benharri.org post meta get $1 syndication_log --format=json \
+    | jq -r '[.[] | .data.url?]' \
+    | wp --path=/var/www/benharri.org post meta add $1 mf2_syndication --format=json
+

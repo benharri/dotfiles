@@ -1,0 +1,6 @@
+#!/bin/sh
+
+wp --path=/var/www/tcpinball.org post meta get $1 _publicize_shares --format=json \
+    | jq -r '[.[] | .message?]' \
+    | wp --path=/var/www/tcpinball.org post meta add $1 mf2_syndication --format=json
+
