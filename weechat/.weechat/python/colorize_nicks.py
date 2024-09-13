@@ -21,6 +21,16 @@
 #
 #
 # History:
+# 2023-10-30: Sébastien Helleu <flashcode@flashtux.org>
+#   version 32: revert to info "nick_color" with WeeChat >= 4.1.1
+# 2023-10-16: Sébastien Helleu <flashcode@flashtux.org>
+#   version 31: use info "irc_nick_color" on IRC buffers with WeeChat >= 4.1.0
+# 2022-11-07: mva
+#   version 30: add ":" and "," to VALID_NICK regexp,
+#               to don't reset colorization in input_line
+# 2022-07-11: ncfavier
+#   version 29: check nick for exclusion *after* stripping
+#               decrease minimum min_nick_length to 1
 # 2020-11-29: jess
 #   version 28: fix ignore_tags having been broken by weechat 2.9 changes
 # 2020-05-09: Sébastien Helleu <flashcode@flashtux.org>
@@ -90,13 +100,13 @@ w = weechat
 
 SCRIPT_NAME    = "colorize_nicks"
 SCRIPT_AUTHOR  = "xt <xt@bash.no>"
-SCRIPT_VERSION = "28"
+SCRIPT_VERSION = "32"
 SCRIPT_LICENSE = "GPL"
 SCRIPT_DESC    = "Use the weechat nick colors in the chat area"
 
 # Based on the recommendations in RFC 7613. A valid nick is composed
 # of anything but " ,*?.!@".
-VALID_NICK = r'([@~&!%+-])?([^\s,\*?\.!@]+)'
+VALID_NICK = r'([@~&!%+-])?([^\s,\*?\.!@:,]+)'
 valid_nick_re = re.compile(VALID_NICK)
 ignore_channels = []
 ignore_nicks = []
@@ -138,7 +148,7 @@ def colorize_config_init():
     colorize_config_option["min_nick_length"] = weechat.config_new_option(
         colorize_config_file, section_look, "min_nick_length",
         "integer", "Minimum length nick to colorize", "",
-        2, 20, "", "", 0, "", "", "", "", "", "")
+        1, 20, "2", "2", 0, "", "", "", "", "", "")
     colorize_config_option["colorize_input"] = weechat.config_new_option(
         colorize_config_file, section_look, "colorize_input",
         "boolean", "Whether to colorize input", "", 0,
@@ -165,12 +175,16 @@ def colorize_config_read():
     global colorize_config_file
     return weechat.config_read(colorize_config_file)
 
-def colorize_nick_color(nick, my_nick):
+def colorize_nick_color(buffer, nick, my_nick):
     ''' Retrieve nick color from weechat. '''
     if nick == my_nick:
         return w.color(w.config_string(w.config_get('weechat.color.chat_nick_self')))
     else:
-        return w.info_get('irc_nick_color', nick)
+        version = int(w.info_get('version_number', '') or 0)
+        if w.buffer_get_string(buffer, 'plugin') == 'irc' and version == 0x4010000:
+            server = w.buffer_get_string(buffer, 'localvar_server')
+            return w.info_get('irc_nick_color', '%s,%s' % (server, nick))
+        return w.info_get('nick_color', nick)
 
 def colorize_cb(data, modifier, modifier_data, line):
     ''' Callback that does the colorizing, and returns new line if changed '''
@@ -206,9 +220,6 @@ def colorize_cb(data, modifier, modifier_data, line):
 
     for words in valid_nick_re.findall(line):
         nick = words[1]
-        # Check that nick is not ignored and longer than minimum length
-        if len(nick) < min_length or nick in ignore_nicks:
-            continue
 
         # If the matched word is not a known nick, we try to match the
         # word without its first or last character (if not a letter).
@@ -224,6 +235,10 @@ def colorize_cb(data, modifier, modifier_data, line):
             elif not nick[-1].isalpha():
                 if nick[:-1] in colored_nicks[buffer]:
                     nick = nick[:-1]
+
+        # Check that nick is not ignored and longer than minimum length
+        if len(nick) < min_length or nick in ignore_nicks:
+            continue
 
         # Check that nick is in the dictionary colored_nicks
         if nick in colored_nicks[buffer]:
@@ -336,7 +351,7 @@ def populate_nicks(*args):
                 continue
 
             nick = w.infolist_string(nicklist, 'name')
-            nick_color = colorize_nick_color(nick, my_nick)
+            nick_color = colorize_nick_color(buffer_ptr, nick, my_nick)
 
             colored_nicks[buffer_ptr][nick] = nick_color
 
@@ -358,7 +373,7 @@ def add_nick(data, signal, type_data):
         colored_nicks[pointer] = {}
 
     my_nick = w.buffer_get_string(pointer, 'localvar_nick')
-    nick_color = colorize_nick_color(nick, my_nick)
+    nick_color = colorize_nick_color(pointer, nick, my_nick)
 
     colored_nicks[pointer][nick] = nick_color
 
