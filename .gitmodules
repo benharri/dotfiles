@@ -22,6 +22,3 @@
 [submodule "vim/.vim/bundle/vim-airline"]
 	path = vim/.vim/pack/plugins/start/vim-airline
 	url = https://github.com/vim-airline/vim-airline
-[submodule "pb"]
-	path = pb
-	url = https://tildegit.org/tomasino/pb

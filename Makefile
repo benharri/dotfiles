@@ -16,7 +16,7 @@ endif
 install:
 	@make $(UNAME)
 
-Linux: bash bin byobu fish git gnupg mutt nvim pb vim weechat
+Linux: bash bin byobu fish git gnupg mutt nvim vim weechat
 Windows: bash git vim
 Other: bash git vim
 
@@ -32,7 +32,6 @@ clean:
 	stow -t "$$HOME" -D nvim
 	stow -t "$$HOME" -D vim
 	stow -t "$$HOME" -D weechat
-	$(MAKE) -C pb PREFIX=~/.local uninstall
 
 bash:
 	@printf "$(YELLOW)--- bash -----------------------------------------------\n$(RESET)"
@@ -69,11 +68,6 @@ nvim:
 	@printf "$(YELLOW)--- nvim -----------------------------------------------\n$(RESET)"
 	stow -t "$$HOME" nvim
 
-pb:
-	@printf "$(YELLOW)--- pb -------------------------------------------------\n$(RESET)"
-	git submodule update --remote --init -- pb
-	$(MAKE) -C pb PREFIX=~/.local install
-
 vim:
 	@printf "$(YELLOW)--- vim ------------------------------------------------\n$(RESET)"
 	mkdir -p ~/.vim/{undodir,swap,backup}
@@ -89,4 +83,4 @@ nuke:
 	@printf "$(RED)--- nuking existing files ------------------------------\n$(RESET)"
 	rm -rf ~/.byobu ~/.config/fish ~/.fzf ~/.bash*
 
-.PHONY: bash fish git pb vim nvim mutt byobu weechat gnupg bin clean install nuke Windows Linux Other
+.PHONY: bash fish git vim nvim mutt byobu weechat gnupg bin clean install nuke Windows Linux Other
