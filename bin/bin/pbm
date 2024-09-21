@@ -1,9 +1,9 @@
 #!/bin/sh
 
 pbm() {
-    curl -s https://pinballmap.com/api/v1/locations/$1/machine_details.json\?machines_only=1 \
-        | jq -r '.machines | .[]' \
-        > ~/public_html/pin/$2.txt
+    curl -s https://pinballmap.com/api/v1/locations/$1/machine_details.json \
+        | jq -r '.machines | .[] | "\(.manufacturer) \(.name)"' \
+        > ~/pub/$2.txt
 }
 
 pbm 9699 coinslot
