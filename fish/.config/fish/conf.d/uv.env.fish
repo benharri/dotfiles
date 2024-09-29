@@ -1,2 +1,3 @@
-
-source "$HOME/.cargo/env.fish"
+if test -f ~/.cargo/env.fish
+    source ~/.cargo/env.fish
+end

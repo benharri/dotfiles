@@ -1,3 +1,5 @@
 # fnm
-set PATH "/home/ben/.local/share/fnm" $PATH
-fnm env | source
+fish_add_path --path ~/.local/share/fnm
+if command -q fnm
+    fnm env | source
+end
