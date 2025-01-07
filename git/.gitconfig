@@ -74,3 +74,6 @@
 	sort = version:refname
 [safe]
 	directory = *
+[fetch]
+	prune = true
+	all = true

@@ -1,4 +1,7 @@
 #!/bin/sh
+set -e
+set -u
+
 matchplayApiKey=$(cat ~/Sync/Notes/keys/matchplayapikey.txt)
 ifpaApiKey=$(cat ~/Sync/Notes/keys/ifpa-api-key.txt)
 

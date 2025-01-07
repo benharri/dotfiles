@@ -1,6 +1,3 @@
-set -xg EDITOR vim
-set -xg TZ 'America/Detroit'
-
 if test -d ~/Maildir
   set -x MAIL ~/Maildir
 end
@@ -29,17 +26,12 @@ if status --is-interactive && type -q rbenv
   end
 end
 
-#set -x SSH_AGENT_PID ""
 if test -S $HOME/.gnupg/S.gpg-agent
   set -x SSH_AUTH_SOCK $HOME/.gnupg/S.gpg-agent
   set -x GPG_SOCK $HOME/.gnupg/S.gpg-agent
 else
   type -q gpgconf && set -x SSH_AUTH_SOCK (gpgconf --list-dirs agent-ssh-socket)
 end
-
-set -x BBJ_USER $USER
-set -x DEBEMAIL ben@tilde.team
-set -x DEBFULLNAME "Ben Harris"
 
 # add dotnet completions if needed
 if status --is-interactive && type -q dotnet
