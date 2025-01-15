@@ -3,7 +3,7 @@
 pbm() {
     curl -s https://pinballmap.com/api/v1/locations/$1/machine_details.json \
         | jq -r '.machines | .[] | "\(.manufacturer) \(.name)"' \
-        > ~/pub/$2.txt
+        > ~/public_html/pin/$2.txt
 }
 
 pbm 9699 coinslot
