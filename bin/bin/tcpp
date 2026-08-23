@@ -1,6 +1,6 @@
 #!/bin/sh
 set -e
-set -u
+#set -u
 
 matchplayApiKey=$(cat ~/Sync/Notes/keys/matchplayapikey.txt)
 ifpaApiKey=$(cat ~/Sync/Notes/keys/ifpa-api-key.txt)
@@ -9,24 +9,25 @@ ifpaApiKey=$(cat ~/Sync/Notes/keys/ifpa-api-key.txt)
 playersjson=$(curl -s "https://app.matchplay.events/api/tournaments/$1?includePlayers=1" \
     -H "Authorization: Bearer $matchplayApiKey" \
     -H "Content-Type: application/json" \
-    -H "Accept: application/json")
-
-# pull finals id from main tourney
-finalsId=$(printf %s "$playersjson" | jq -r ".data.linkedTournamentId")
+    -H "Accept: application/json" \
+    | jq -r '.data')
 
 # get standings for finals
-standingsids=$(curl -s "https://app.matchplay.events/api/tournaments/$finalsId/standings" \
+standingsids=$(curl -s "https://app.matchplay.events/api/tournaments/$2/standings" \
     -H "Authorization: Bearer $matchplayApiKey" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json" \
     | jq -r '.[] | .playerId')
 
 # look up ifpa tourneys in TC for the date from matchplay
-d=$(printf %s "$playersjson" | jq -r ".data.startUtc")
+d=$(printf %s "$playersjson" | jq -r ".startUtc")
 shortdate=$(date --date "$d" +"%B %-d")
 
-ifpa=$(curl -s "https://api.ifpapinball.com/v1/calendar/search?api_key=$ifpaApiKey&address=Traverse%20City&m=3")
-ifpatourney=$(printf %s "$ifpa" | jq -r ".calendar[] | select(.start_date == \"$(date --date "$d" +"%F")\").tournament_id")
+if [ -n "$3" ]; then
+    ifpatourney=" (<a href=\"https://www.ifpapinball.com/tournaments/view.php?t=$3\">IFPA</a>)"
+else
+    ifpatourney=""
+fi
 
 # set author, excerpt, and categories based on day-of-week
 author=1
@@ -41,7 +42,7 @@ case $(date --date "$d" +"%a") in
         ;;
     Sun)
         categories="58,51"
-        author=8
+        author=21
         excerpt="Results for the $shortdate Belles tourney"
         ;;
     *)
@@ -51,14 +52,10 @@ esac
 
 # pull names from original tournament json by ids from standings
 # gotta be a better way to do this
-player1=$(printf %s "$playersjson" | jq -r ".data.players | .[] | select(.playerId == $(printf %s "$standingsids" | head -n1 | tail -n1)).name")
-p1ifpa=$(printf %s "$playersjson" | jq -r ".data.players | .[] | select(.playerId == $(printf %s "$standingsids" | head -n1 | tail -n1)).ifpaId")
-player2=$(printf %s "$playersjson" | jq -r ".data.players | .[] | select(.playerId == $(printf %s "$standingsids" | head -n2 | tail -n1)).name")
-p2ifpa=$(printf %s "$playersjson" | jq -r ".data.players | .[] | select(.playerId == $(printf %s "$standingsids" | head -n2 | tail -n1)).ifpaId")
-player3=$(printf %s "$playersjson" | jq -r ".data.players | .[] | select(.playerId == $(printf %s "$standingsids" | head -n3 | tail -n1)).name")
-p3ifpa=$(printf %s "$playersjson" | jq -r ".data.players | .[] | select(.playerId == $(printf %s "$standingsids" | head -n3 | tail -n1)).ifpaId")
-player4=$(printf %s "$playersjson" | jq -r ".data.players | .[] | select(.playerId == $(printf %s "$standingsids" | head -n4 | tail -n1)).name")
-p4ifpa=$(printf %s "$playersjson" | jq -r ".data.players | .[] | select(.playerId == $(printf %s "$standingsids" | head -n4 | tail -n1)).ifpaId")
+player1=$(printf %s "$playersjson" | jq -r ".players | .[] | select(.playerId == $(printf %s "$standingsids" | head -n1 | tail -n1)).name")
+player2=$(printf %s "$playersjson" | jq -r ".players | .[] | select(.playerId == $(printf %s "$standingsids" | head -n2 | tail -n1)).name")
+player3=$(printf %s "$playersjson" | jq -r ".players | .[] | select(.playerId == $(printf %s "$standingsids" | head -n3 | tail -n1)).name")
+player4=$(printf %s "$playersjson" | jq -r ".players | .[] | select(.playerId == $(printf %s "$standingsids" | head -n4 | tail -n1)).name")
 
 # create the post draft and save the id
 postid=$(sudo -Hu www-data wp --path=/var/www/tcpinball.org \
@@ -78,23 +75,18 @@ postid=$(sudo -Hu www-data wp --path=/var/www/tcpinball.org \
 <!-- /wp:table -->
 
 <!-- wp:paragraph -->
-<p>See the full results on <a href=\"https://app.matchplay.events/tournaments/$1\">Match Play</a> - <a href=\"https://app.matchplay.events/tournaments/$finalsId\">Finals</a> (<a href=\"https://www.ifpapinball.com/tournaments/view.php?t=$ifpatourney\">IFPA</a>).</p>
+<p>See the full results on <a href=\"https://app.matchplay.events/tournaments/$1\">Match Play</a> - <a href=\"https://app.matchplay.events/tournaments/$2\">Finals</a>$ifpatourney</p>
 <!-- /wp:paragraph -->
 ")
 
-# drop a link to the editor so i can attach the featured pic before publishing
+# drop a link to the editor so i can attach the pic before publishing
 printf "https://tcpinball.org/wp-admin/post.php?action=edit&post=%s\n" "$postid"
-printf "https://www.ifpapinball.com/tournaments/manage/submit_results/?t=%s\n" "$ifpatourney"
 
-printf "\nqualifying\n"
-printf "https://app.matchplay.events/tournaments/%s/standings\n" "$1"
-printf "\nfinals\n"
-printf "https://app.matchplay.events/tournaments/%s/standings\n" "$finalsId"
+#printf "\nqualifying\n"
+#printf "https://app.matchplay.events/tournaments/%s/standings\n" "$1"
+#printf "\nfinals\n"
+#printf "https://app.matchplay.events/tournaments/%s/standings\n" "$2"
 
-printf "\n"
-printf "1,%s,%s\n" "$player1" "$p1ifpa"
-printf "2,%s,%s\n" "$player2" "$p2ifpa"
-printf "3,%s,%s\n" "$player3" "$p3ifpa"
-printf "4,%s,%s\n" "$player4" "$p4ifpa"
-printf "\nplus https://app.matchplay.events/tournaments/%s/ifpa\n" "$1"
+#printf "\ngrab formatted results:\n"
+#printf "qualif: https://app.matchplay.events/tournaments/%s/ifpa\n" "$1"
 
